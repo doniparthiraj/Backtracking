@@ -21,7 +21,7 @@ bool issafe(int i,int j,int num,int n,vector<vector<int>>&grid)
 bool sudoku(vector<vector<int>>&grid,int i=0,int j=0)
 {
 	int n=grid.size();
-	if(i==n-1 && j==n)
+	if(i>=n-1 && j==n)
 	return 1;
 	if(j==n)
 	{
@@ -35,7 +35,7 @@ bool sudoku(vector<vector<int>>&grid,int i=0,int j=0)
 		if(issafe(i,j,num,n,grid))
 		{
 			grid[i][j]=num;
-			if(sudoku(grid))
+			if(sudoku(grid,i,j+1))
 			return true;
 			grid[i][j]=0;
 		}
